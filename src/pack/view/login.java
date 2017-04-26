@@ -65,24 +65,24 @@ public class login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("PASSWORD");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 80, 80, 19);
+        jLabel2.setBounds(10, 89, 80, 30);
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("USERNAME");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 50, 80, 19);
+        jLabel3.setBounds(10, 49, 80, 30);
 
         txtnama.setSelectionColor(new java.awt.Color(204, 204, 255));
         jPanel1.add(txtnama);
-        txtnama.setBounds(110, 50, 130, 20);
+        txtnama.setBounds(110, 50, 130, 30);
 
         txtpass.setSelectionColor(new java.awt.Color(204, 204, 255));
         jPanel1.add(txtpass);
-        txtpass.setBounds(110, 80, 130, 20);
+        txtpass.setBounds(110, 90, 130, 30);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 290, 120);
+        jPanel1.setBounds(0, 0, 290, 150);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setLayout(null);
@@ -95,7 +95,7 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btIn);
-        btIn.setBounds(50, 30, 100, 23);
+        btIn.setBounds(50, 40, 100, 23);
 
         btUp.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btUp.setText("Sign Up");
@@ -105,7 +105,7 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btUp);
-        btUp.setBounds(10, 70, 80, 23);
+        btUp.setBounds(10, 80, 80, 23);
 
         btKeluar.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btKeluar.setText("Keluar");
@@ -115,12 +115,12 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btKeluar);
-        btKeluar.setBounds(100, 70, 80, 23);
+        btKeluar.setBounds(100, 80, 80, 23);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(290, 0, 190, 120);
+        jPanel2.setBounds(290, 0, 190, 150);
 
-        setSize(new java.awt.Dimension(495, 158));
+        setSize(new java.awt.Dimension(496, 181));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -128,7 +128,7 @@ public class login extends javax.swing.JFrame {
         Connection connection;
         PreparedStatement ps;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/toko?zeroDate TimeBehavior=convertToNull", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/db_toko?zeroDate TimeBehavior=convertToNull", "root", "");
             ps = connection.prepareStatement("SELECT * FROM `tb_akun` WHERE `username` = ? AND `password` = ?");
             ps.setString(1, txtnama.getText());
             ps.setString(2, txtpass.getText());
