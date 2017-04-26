@@ -5,12 +5,22 @@
  */
 package pack.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import pack.control.login_koneksi;
+
 /**
  *
  * @author Ridjal Fathoni
  */
 public class login extends javax.swing.JFrame {
 
+    public static String user;
     /**
      * Creates new form login
      */
@@ -27,21 +37,135 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtnama = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
+        jPanel2 = new javax.swing.JPanel();
+        btIn = new javax.swing.JButton();
+        btUp = new javax.swing.JButton();
+        btKeluar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setLayout(null);
 
-        pack();
+        jLabel1.setFont(new java.awt.Font("Photographs", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("LOGIN");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(120, 10, 40, 29);
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setText("PASSWORD");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 80, 80, 19);
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("USERNAME");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 50, 80, 19);
+
+        txtnama.setSelectionColor(new java.awt.Color(204, 204, 255));
+        jPanel1.add(txtnama);
+        txtnama.setBounds(110, 50, 130, 20);
+
+        txtpass.setSelectionColor(new java.awt.Color(204, 204, 255));
+        jPanel1.add(txtpass);
+        txtpass.setBounds(110, 80, 130, 20);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 290, 120);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setLayout(null);
+
+        btIn.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btIn.setText("Sign In");
+        btIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btIn);
+        btIn.setBounds(50, 30, 100, 23);
+
+        btUp.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btUp.setText("Sign Up");
+        btUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btUp);
+        btUp.setBounds(10, 70, 80, 23);
+
+        btKeluar.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btKeluar.setText("Keluar");
+        btKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKeluarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btKeluar);
+        btKeluar.setBounds(100, 70, 80, 23);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(290, 0, 190, 120);
+
+        setSize(new java.awt.Dimension(495, 158));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInActionPerformed
+        Connection connection;
+        PreparedStatement ps;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/toko?zeroDate TimeBehavior=convertToNull", "root", "");
+            ps = connection.prepareStatement("SELECT * FROM `tb_akun` WHERE `username` = ? AND `password` = ?");
+            ps.setString(1, txtnama.getText());
+            ps.setString(2, txtpass.getText());
+            ResultSet result = ps.executeQuery();
+            if (result.next()) {
+                new home().show();
+                //perlu deklarasi user diclass utama.                 
+                user = txtnama.getText();
+                
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Salah!");
+                txtpass.setText("");
+                txtnama.requestFocus();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Gagal!");
+        }
+    }//GEN-LAST:event_btInActionPerformed
+
+    private void btUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpActionPerformed
+        String user = txtnama.getText();
+        String p = txtpass.getText();
+        
+        try{
+            try(Statement statement = (Statement) login_koneksi.GetConnection().createStatement()){
+                statement.executeUpdate("INSERT INTO tb_akun VALUES ('"+user+"', '"+p+"')");
+            } 
+            JOptionPane.showMessageDialog(null, "Sign Up Berhasil");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "GAGAL! Silahkan Ulangi");
+        }
+    }//GEN-LAST:event_btUpActionPerformed
+
+    private void btKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKeluarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +203,15 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btIn;
+    private javax.swing.JButton btKeluar;
+    private javax.swing.JButton btUp;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtnama;
+    private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables
 }
