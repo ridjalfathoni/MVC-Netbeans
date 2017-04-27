@@ -12,7 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import pack.control.login_koneksi;
+import pack.dao.daoToko;
+import pack.dao.implementToko;
 
 /**
  *
@@ -21,6 +24,7 @@ import pack.control.login_koneksi;
 public class login extends javax.swing.JFrame {
 
     public static String user;
+
     /**
      * Creates new form login
      */
@@ -87,7 +91,9 @@ public class login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setLayout(null);
 
-        btIn.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btIn.setBackground(new java.awt.Color(51, 255, 51));
+        btIn.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        btIn.setForeground(new java.awt.Color(0, 102, 51));
         btIn.setText("Sign In");
         btIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,9 +101,11 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btIn);
-        btIn.setBounds(50, 40, 100, 23);
+        btIn.setBounds(50, 33, 100, 30);
 
-        btUp.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btUp.setBackground(new java.awt.Color(0, 153, 255));
+        btUp.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        btUp.setForeground(new java.awt.Color(0, 51, 102));
         btUp.setText("Sign Up");
         btUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,9 +113,11 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btUp);
-        btUp.setBounds(10, 80, 80, 23);
+        btUp.setBounds(10, 73, 80, 30);
 
-        btKeluar.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btKeluar.setBackground(new java.awt.Color(255, 102, 102));
+        btKeluar.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        btKeluar.setForeground(new java.awt.Color(153, 0, 0));
         btKeluar.setText("Keluar");
         btKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +125,7 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btKeluar);
-        btKeluar.setBounds(100, 80, 80, 23);
+        btKeluar.setBounds(100, 73, 80, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(290, 0, 190, 150);
@@ -167,6 +177,10 @@ public class login extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btKeluarActionPerformed
 
+    public JTextField getUser(){ 
+        return txtnama;
+    }
+    
     /**
      * @param args the command line arguments
      */

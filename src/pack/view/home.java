@@ -145,6 +145,7 @@ public class home extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 20, 130, 20);
 
+        txtadmin.setFont(new java.awt.Font("OCR-B 10 BT", 0, 12)); // NOI18N
         txtadmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtadmin);
         txtadmin.setBounds(10, 50, 140, 30);
