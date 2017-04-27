@@ -165,7 +165,7 @@ public class home extends javax.swing.JFrame {
         jPanel2.add(txtharga);
         txtharga.setBounds(10, 290, 240, 30);
 
-        cbKategoriBrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan", "Baju", "Celana" }));
+        cbKategoriBrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan", "Baju", "Celana", "Baranglain" }));
         jPanel2.add(cbKategoriBrg);
         cbKategoriBrg.setBounds(10, 170, 240, 30);
 
@@ -289,7 +289,7 @@ public class home extends javax.swing.JFrame {
         jLabel12.setBounds(60, 70, 370, 30);
 
         CbCariKategori.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
-        CbCariKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan", "Baju", "Celana" }));
+        CbCariKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan", "Baju", "Celana", "Baranglain" }));
         jPanel3.add(CbCariKategori);
         CbCariKategori.setBounds(450, 70, 210, 30);
 

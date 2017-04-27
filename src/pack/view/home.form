@@ -137,10 +137,11 @@
         <Component class="javax.swing.JComboBox" name="cbKategoriBrg">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="4">
                 <StringItem index="0" value="Makanan"/>
                 <StringItem index="1" value="Baju"/>
                 <StringItem index="2" value="Celana"/>
+                <StringItem index="3" value="Baranglain"/>
               </StringArray>
             </Property>
           </Properties>
@@ -409,10 +410,11 @@
               <Font name="Microsoft Yi Baiti" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="4">
                 <StringItem index="0" value="Makanan"/>
                 <StringItem index="1" value="Baju"/>
                 <StringItem index="2" value="Celana"/>
+                <StringItem index="3" value="Baranglain"/>
               </StringArray>
             </Property>
           </Properties>
